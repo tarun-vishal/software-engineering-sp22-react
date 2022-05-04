@@ -1,4 +1,4 @@
-
+import React from "react";
 const TuitVideo = ({tuit}) => {
   return(
     <div

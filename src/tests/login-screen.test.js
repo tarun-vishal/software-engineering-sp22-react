@@ -8,7 +8,7 @@ import services from "./services";
 import {Login} from "../components/profile/login";
 import {act, fireEvent, render, screen, waitFor} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
-import Tuiter from "../components/tuiter/tuiter";
+import Tuiter from "../components/tuiter";
 import React from "react";
 
 jest.mock("axios");
@@ -18,7 +18,7 @@ const MOCKED_USERS = [
   {username: 'sarah_conor', password: 'illbeback', email: 'sarah@bigjeff.com'},
 ]
 
-test("Mocked Hello World axios works", async () => {
+test("mocked hello world axios works", async () => {
   axios.get.mockImplementation(() =>
     Promise.resolve({ data: {message: 'hello world'} }));
   const response = await axios.get();
@@ -26,7 +26,7 @@ test("Mocked Hello World axios works", async () => {
 });
 
 describe('sss', () => {
-  test("Mocked Hello World axios works", async () => {
+  test("mocked hello world axios works", async () => {
     axios.get.mockImplementation(() =>
       Promise.resolve({ data: {message: 'hello world'} }));
     const response = await axios.get();
@@ -34,7 +34,7 @@ describe('sss', () => {
   });
 })
 
-test("Find All Users Mock works or not", async () => {
+test("find all users mock works", async () => {
   axios.get.mockImplementation(() =>
     Promise.resolve({ data: {users: MOCKED_USERS} }));
   const response = await services.findAllUsers();
@@ -46,7 +46,7 @@ test("Find All Users Mock works or not", async () => {
 });
 
 describe('fff', () => {
-  test("Find all Users mock works", async () => {
+  test("find all users mock works", async () => {
     axios.get.mockImplementation(() =>
       Promise.resolve({ data: {users: MOCKED_USERS} }));
     const response = await services.findAllUsers();
@@ -57,7 +57,6 @@ describe('fff', () => {
     });
   });
 })
-
 
 describe('www', () => {
   beforeEach(() => {
@@ -90,11 +89,61 @@ describe('www', () => {
       expect(linkElement).toBeInTheDocument();
     });
 
+
+    // act(() => {
+    //   const loginLink = screen.getByText(/Login/i);
+    //   console.log(loginLink)
+    //   // // get all the links
+    //   // const a = document.querySelectorAll("a");
+    //   // // click on the nth link
+    //   // fireEvent.click(a[nth]);
+    // })
+
+    // ;
+    // await waitFor(() => {
+    //   const linkElement = screen.getByText(/ellenripley/i);
+    //   expect(linkElement).toBeInTheDocument();
+    // });
+
+    // expect(await screen.getByText(/ellen_ripley/i)).toBeInTheDocument();
+
+    // const {container} = render(
+    //   <HashRouter>
+    //     <Login/>
+    //   </HashRouter>
+    // );
+
+
+    // act(() => {
+    //   render(
+    //     <HashRouter>
+    //       <Login/>
+    //     </HashRouter>
+    //   )
+    // });
+    //
+    // const a = document.querySelectorAll("a");
+    //
+    //   console.log(a);
+
+    // await waitFor(async () => {
+    //   await screen.getByText(/ellen_ripley/i);
+    //   expect(user).toBeInTheDocument();
+    // }, {timeout: 5000});
+
+    // screen.getByText(/ellen_ripley/i)
+    //   .then(ddd => {
+    //     console.log(ddd)
+    //     // expect(user).toBeInTheDocument();
+    //   })
   });
 });
 
 describe('createUser', () => {
 
+
+  // axios.get.mockResolvedValue(resp);
+  // axios.get.mockImplementation(() => Promise.resolve(resp))
 
   jest.mock('axios', () => ({
     get: jest.fn((url) => {
@@ -140,7 +189,7 @@ describe('deleteUsersByUsername', () => {
     return createUser(sowell);
   });
 
-  test('User service can delete users by their Username', async () => {
+  test('user service can delete users by their username', async () => {
     // delete a user by their username. Assumes user already exists
     const status = await deleteUsersByUsername(sowell.username);
 
