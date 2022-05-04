@@ -11,6 +11,7 @@ const Home = () => {
   const [tuit, setTuit] = useState('');
   // const location = useLocation();
   const userId = uid;
+  // eslint-disable-next-line
   const findTuits = () => {
     if(uid) {
       return service.findTuitByUser(uid)
@@ -20,11 +21,14 @@ const Home = () => {
         .then(tuits => setTuits(tuits))
     }
   }
+  // eslint-disable-next-line
   useEffect(() => {
     let isMounted = true;
     console.log(isMounted);
     findTuits()
+    // eslint-disable-next-line
     return () => {isMounted = false;}
+    // eslint-disable-next-line
   }, []);
   const createTuit = () =>
       service.createTuit(userId, {tuit})

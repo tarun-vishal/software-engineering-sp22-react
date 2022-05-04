@@ -11,6 +11,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [profile, setProfile] = useState({});
+  // eslint-disable-next-line
   useEffect(async () => {
     try {
       const user = await service.profile();
@@ -18,6 +19,7 @@ const Profile = () => {
     } catch (e) {
       navigate('/login');
     }
+    // eslint-disable-next-line
   }, []);
   const logout = () => {
     service.logout()
